@@ -7,7 +7,7 @@ import * as Archiver from 'archiver';
 
 const manifest = require('../dist/manifest.json');
 const manifestVersion = manifest.version;
-const archiveName = 'gitea-vsci';
+const archiveName = 'web-vsci';
 
 if (process.env.BROWSER && ['CHROME', 'FIREFOX', 'EDGE'].includes(process.env.BROWSER)) {
 	const name = process.env.BROWSER.toLowerCase();
