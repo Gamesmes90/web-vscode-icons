@@ -28,10 +28,10 @@ function showIconsForSegments () {
   }
   
   // check if final segment is file or folder
-  if (finalSegment) {
+  if (finalSegment) { //String must be trimmed as there might be whitespaces at the start causing the retrieval of the wrong icon
     const iconPath = window.location.href.includes('/blob/')
-      ? getIconForFile(finalSegment.innerText.toLowerCase())
-      : getIconForOpenFolder(finalSegment.innerText.toLowerCase());
+      ? getIconForFile(finalSegment.innerText.trim().toLowerCase()) 
+      : getIconForOpenFolder(finalSegment.innerText.trim().toLowerCase());
     finalSegment.innerHTML = `<img src="${getIconUrl(iconPath)}" alt="icon" width="16" height="16"><span> ${
       finalSegment.innerText
     }</span>`;
@@ -41,7 +41,7 @@ function showIconsForSegments () {
   for (let i = 1; i < aSegments.length; i++) {
     const spanEl = aSegments[i];
     const aEl = spanEl.firstChild as HTMLAnchorElement;
-    const iconPath = getIconForOpenFolder(aEl.innerText.toLowerCase());
+    const iconPath = getIconForOpenFolder(aEl.innerText.trim().toLowerCase());
     aEl.innerHTML = `<img src="${getIconUrl(iconPath)}" alt="icon" width="16" height="16"><span> ${aEl.innerText}</span>`;
   }
   }
