@@ -1,2 +1,2 @@
 # web-vscode-icons
-Vscode icons for github, gitlab and gitea
+Vscode icons for github, gitlab, sourceforge and gitea
