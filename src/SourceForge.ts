@@ -1,6 +1,4 @@
 import { getIconForFile, getIconForFolder } from 'vscode-icons-js';
-//import { mutate } from 'fastdom';
-//import { getFolderIcon, getFileIcon } from '../utils/Dev';
 
 export const QUERY_SOURCEFORGE_ITEMS = '#files_list>tbody>tr';
 
@@ -29,12 +27,8 @@ function showIconsForFiles() {
       const iconEl = iconAndNameEl.firstElementChild as SVGAElement;
       const nameEl = iconAndNameEl.lastElementChild as HTMLAnchorElement;
       const name = nameEl.innerText.toLowerCase();
-      //const iconPath = getFolderIcon(name);
       const iconPath = getIconForFolder(name);
-    //   mutate(() => {
-    //     newIconEl.setAttribute('src', getIconUrl(iconPath));
-    //     iconAndNameEl.replaceChild(newIconEl, iconEl);
-    //   });
+
       newIconEl.setAttribute('src', getIconUrl(iconPath));
       newIconEl.setAttribute('width', '20');
       newIconEl.setAttribute('height', '20');
@@ -52,10 +46,7 @@ function showIconsForFiles() {
       const nameEl = iconAndNameEl.firstElementChild as HTMLAnchorElement;
       const name = nameEl.innerText.toLowerCase();
       const iconPath = getIconForFile(name);
-    //   mutate(() => {
-    //     newIconEl.setAttribute('src', getIconUrl(iconPath));
-    //     iconAndNameEl.insertBefore(newIconEl, nameEl);
-    //   });
+
       newIconEl.setAttribute('src', getIconUrl(iconPath));
       newIconEl.setAttribute('width', '20');
       newIconEl.setAttribute('height', '20');
