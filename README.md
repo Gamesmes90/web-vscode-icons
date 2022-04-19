@@ -7,7 +7,7 @@ Vscode icons for github, gitlab, sourceforge and gitea
 - [x] GitHub
 - [x] GitHub Directory
 - [x] GitLab
-- [ ] GitLab Directory
+- [x] GitLab Directory
 - [x] SourceForge
 - [x] Gitea
 - [x] Gitea Directory
