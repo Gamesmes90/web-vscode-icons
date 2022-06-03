@@ -16,8 +16,6 @@ Favicons are from [the original project](https://github.com/dderevjanik/github-v
 - [x] SourceForge
 - [x] Gitea
 - [x] Gitea Directory
-~~- [ ] Options menu~~
-~~- [ ] Custom entries~~
 
 ## Bug fixes
 - Fixed Gitlab [thanks to this fork](https://github.com/jefersonla/github-vscode-icons)
