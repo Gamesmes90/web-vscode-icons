@@ -15,6 +15,9 @@ Inspired by [github-vscode-icons](github-vscode-icons), this extensions adds som
 - [ ] Options menu
 - [ ] Custom entries
 
+## Bug fixes
+- Fixed Gitlab [thanks to this fork](https://github.com/jefersonla/github-vscode-icons)
+- Fixed some icons
 
 ### Important note about vscode-icons-js
 The original npm package lacks a couple of extensions, for this reason to compile the program it's better to manually install [this fork](https://github.com/Gamesmes90/vscode-icons-js) or else some files icons will be missing.
