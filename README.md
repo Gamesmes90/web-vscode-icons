@@ -1,4 +1,4 @@
-# web-vscode-icons (Minimal)
+# web-vscode-icons
 Vscode icons for github, gitlab, sourceforge and gitea
 
 Inspired by [github-vscode-icons](github-vscode-icons), this extensions adds some bug fixes and new features.
