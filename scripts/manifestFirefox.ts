@@ -2,11 +2,9 @@ const manifest = {
   manifest_version:2,
   version:'1.0',
   description: 'This extension shows VS Code icons in Gitea Repositories',
-  name:'web-vscode-icons',
+  name:'web-vscode-icons-minimal',
   author: 'Gamesmes90 <gamesmes90@gmail.com>',
-  browser_action:{
-    default_popup: 'index.html'
-  },
+
   icons: {
     '128': 'favicon128.png',
     '48': 'favicon48.png',
@@ -43,9 +41,6 @@ const manifest = {
       js:['Gitea.js']
     }
   ],
-  options_ui: {
-    page: 'index.html'
-  },
 
   permissions: ['storage'],
   web_accessible_resources: [

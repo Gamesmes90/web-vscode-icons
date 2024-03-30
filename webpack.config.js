@@ -3,8 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/main.ts',
-    settings: './src/settings.ts',
     GitHub: './src/GitHub.ts',
     GitLab: './src/GitLab.ts',
     Gitea: './src/Gitea.ts',
