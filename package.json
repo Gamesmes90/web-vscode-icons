@@ -1,5 +1,5 @@
 {
-  "name": "web-vscode-icons",
+  "name": "web-vscode-icons-minimal",
   "version": "1.0.0",
   "description": "Vscode icons for github, gitlab and gitea",
   "main": "index.js",
@@ -29,7 +29,7 @@
     "fastdom": "^1.0.10",
     "github-url-detection": "^5.10.0",
     "selector-observer": "^2.1.6",
-    "vscode-icons-js": "^11.6.1"
+    "vscode-icons-js": "git+https://github.com/Gamesmes90/vscode-icons-js.git"
   },
   "devDependencies": {
     "@types/archiver": "^5.3.1",
