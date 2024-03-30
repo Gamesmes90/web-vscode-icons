@@ -29,7 +29,7 @@
     "fastdom": "^1.0.10",
     "github-url-detection": "^5.10.0",
     "selector-observer": "^2.1.6",
-    "vscode-icons-js": "^11.6.1"
+    "vscode-icons-js": "git+https://github.com/Gamesmes90/vscode-icons-js.git"
   },
   "devDependencies": {
     "@types/archiver": "^5.3.1",
