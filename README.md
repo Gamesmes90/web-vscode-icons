@@ -16,10 +16,28 @@ Favicons are from [the original project](https://github.com/dderevjanik/github-v
 - [x] SourceForge
 - [x] Gitea
 - [x] Gitea Directory
+- [ ] Options menu
+- [ ] Custom entries
 
 ## Bug fixes
 - Fixed Gitlab [thanks to this fork](https://github.com/jefersonla/github-vscode-icons)
 - Fixed some icons
 
-### Important note about vscode-icons-js
-The original npm package lacks a couple of extensions, for this reason to compile the program it's better to manually install [this fork](https://github.com/Gamesmes90/vscode-icons-js) or else some files icons will be missing.
+### Building
+The [package.json](package.json) has the following building options
+
+- build:all
+    - builds both firefox and chrome extensions
+- build:all:clean
+    - builds and cleans the dist folder
+- build:chrome
+    - builds chrome extension
+- build:firefox
+    - builds firefox extension
+
+It is possible to build a minimal version of this extension (Without custom entries and settings)
+
+- build:minimal:all
+- build:minimal:all:clean
+- build:minimal:chrome
+- build:minimal:firefox

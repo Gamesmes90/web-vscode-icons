@@ -1,8 +1,10 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+let config = {
   entry: {
+    main: './src/main.ts',
+    settings: './src/settings.ts',
     GitHub: './src/GitHub.ts',
     GitLab: './src/GitLab.ts',
     Gitea: './src/Gitea.ts',
@@ -32,4 +34,13 @@ module.exports = {
         ]
     })
   ]
-}
+};
+
+module.exports = (env, argv) => {
+  if (env.minimal=='true') {
+    console.log("Minimal build");
+    delete config.entry.main;
+    delete config.entry.settings;
+  }
+  return config;
+};
