@@ -16,7 +16,7 @@ function createListElement(ul : HTMLElement, url : string, type : string, index 
 
     var label = document.createElement("label");
     label.style.cssText = "padding-right: 20px;";
-    label.textContent = "URL: " + url + " Type: " + type;
+    label.textContent = "URL: " + url + " | Type: " + type;
 
     li.appendChild(label);
     li.appendChild(button);
@@ -49,7 +49,7 @@ var saveEntry = function(){
       
         // Check if the entry already exists
         if (entries.some((e: { url: string; }) => e.url === entry.url)) {
-            console.log('Entry already exists, skipping');
+            console.log(chrome.runtime.getManifest().name + ": " + 'Entry already exists, skipping');
             return;
         }
 
@@ -58,7 +58,7 @@ var saveEntry = function(){
       
         // Save the updated list back to storage
         chrome.storage.local.set({entries: entries}, () => {
-          console.log('Entry saved');
+          console.log(chrome.runtime.getManifest().name + ": " + 'Entry saved');
         });
     });
 }
@@ -75,7 +75,7 @@ function deleteEntry(button : HTMLButtonElement) {
       
         // If the list doesn't exist yet, do nothing
         if (!entries) {
-            console.log('No entries to delete');
+            console.log(chrome.runtime.getManifest().name + ": " + 'No entries to delete');
             return;
         }
       
@@ -84,15 +84,26 @@ function deleteEntry(button : HTMLButtonElement) {
       
         // Save the updated list back to storage
         chrome.storage.local.set({entries: entries}, () => {
-            console.log('Entry deleted');
+            console.log(chrome.runtime.getManifest().name + ": " + 'Entry deleted');
         });
     });
     // Reload the page
     location.reload();
+
+    // Remove entry from content_scripts
+    try{
+        const filter: chrome.scripting.ContentScriptFilter = {
+            ids: [button.id.split("_")[1]],
+        }
+        chrome.scripting.unregisterContentScripts(filter, () => console.log(chrome.runtime.getManifest().name + ": " + 'Content script unregistered.'));
+    } catch (e) {
+        console.log(chrome.runtime.getManifest().name + ": " + 'Error unregistering content script');
+        console.log(chrome.runtime.getManifest().name + ": " + e);
+    }
 }
 
 // Add function saveEntry to the button
-document.getElementById('custom_entry').onsubmit = saveEntry;
+document.getElementById('save').onclick = saveEntry;
 
 // Add entries to ul list
 window.onload = () => {
