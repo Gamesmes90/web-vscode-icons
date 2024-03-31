@@ -4,12 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = {
   entry: {
-    main: './src/main.ts',
+    entriesLoader: './src/entriesLoader.ts',
     settings: './src/settings.ts',
     GitHub: './src/GitHub.ts',
     GitLab: './src/GitLab.ts',
     Gitea: './src/Gitea.ts',
-    SourceForge: './src/SourceForge.ts'
+    SourceForge: './src/SourceForge.ts' 
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -44,7 +44,7 @@ let config = {
 module.exports = (env, argv) => {
   if (env.minimal=='true') {
     console.log("Minimal build");
-    delete config.entry.main;
+    delete config.entry.entriesLoader;
     delete config.entry.settings;
     delete config.plugins.at(1);
   }
