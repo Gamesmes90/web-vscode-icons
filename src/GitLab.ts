@@ -122,10 +122,15 @@ function showRepoTreeIcons() {
   });
 }
 
-showRepoTreeIcons();
+try {
+  showRepoTreeIcons();
 
-observe("li.breadcrumb-item", {
-  add(dir) {
-    showIconsForSegments((dir as HTMLElement));
-  },
-})
+  observe("li.breadcrumb-item", {
+    add(dir) {
+      showIconsForSegments((dir as HTMLElement));
+    },
+  })
+}
+catch (e) {
+  console.info(chrome.runtime.getManifest().name + ": " + e);
+}
