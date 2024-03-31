@@ -32,6 +32,12 @@ var saveEntry = function(){
     var url = document.getElementById("url") as HTMLInputElement;
     var type = document.getElementById("type") as HTMLSelectElement;
 
+    // Stop if the url is empty
+    if (!url.value) {
+        console.log(chrome.runtime.getManifest().name + ": " + 'URL is empty');
+        return;
+    }
+
     // Create entry to save
     const entry = {
         url: url.value,
@@ -61,6 +67,19 @@ var saveEntry = function(){
           console.log(chrome.runtime.getManifest().name + ": " + 'Entry saved');
         });
     });
+
+    // Add entry to content_scripts
+    try{
+        const script = {
+            id: entry.url,
+            matches: ['*://' + entry.url + '/*'],
+            js: [entry.type + '.js'],
+        }
+        chrome.scripting.registerContentScripts([script], () => console.log(chrome.runtime.getManifest().name + ": " + 'Content script registered.'));
+    } catch (e) {
+        console.log(chrome.runtime.getManifest().name + ": " + 'Error registering content script');
+        console.log(chrome.runtime.getManifest().name + ": " + e);
+    }
 }
 
 
