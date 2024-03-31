@@ -15,20 +15,25 @@ const getIconUrl = (iconFileName: string) => chrome.runtime.getURL('icons/' + ic
 
 /**
  * Show icon for folder tree
+ * @description The svg element has 2 classes representing the state of the icon (open/closed), to make sure the correct icon is shown the correct function must be called
  * @param svg SVGElement
+ * @param callback function to get the icon name
+ * @see getIconForFolder
+ * @see getIconForOpenFolder
  * @returns 
  */
-function showFolderIconTree(svg : SVGElement){
-  if(svg.previousElementSibling){
-    svg.remove();
-    return;
-  }
+function showFolderIconTree(svg : SVGElement, callback: (name: string) => string){
+  /* 
+  * Remove the previous icon if it exists
+  * the class of the svg might have changed so to accomodate for the new icon we remove the old one
+  */
+  svg.previousElementSibling?.remove();
 
   const name = svg.parentElement.parentElement.parentElement.querySelector('span > span')?.textContent?.toLowerCase();
   if (!name) return;
 
   const newIconEl = document.createElement('img');
-  newIconEl.setAttribute('src', getIconUrl(getIconForFolder(name)));
+  newIconEl.setAttribute('src', getIconUrl(callback(name)));
   newIconEl.setAttribute('class', 'web-vscode-icon');
   newIconEl.setAttribute('width', '16');
   newIconEl.setAttribute('height', '16');
@@ -106,13 +111,13 @@ function showIconsForSideTree (tree : HTMLUListElement) {
 
   observe(SIDE_TREE_OPEN_FOLDER, {
     add(svg){
-      showFolderIconTree(svg as SVGElement);
+      showFolderIconTree(svg as SVGElement, getIconForOpenFolder);
     }
   });
 
   observe(SIDE_TREE_FOLDER, {
     add(svg){
-      showFolderIconTree(svg as SVGElement);
+      showFolderIconTree(svg as SVGElement, getIconForFolder);
     }
   });
 }
