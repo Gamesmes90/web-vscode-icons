@@ -37,6 +37,11 @@ var saveEntry = function(){
         console.log(chrome.runtime.getManifest().name + ": " + 'URL is empty');
         return;
     }
+    // Stop if the type is empty
+    if (!type.selectedOptions.item(0)) {
+        console.log(chrome.runtime.getManifest().name + ": " + 'Type is empty');
+        return;
+    }
 
     // Create entry to save
     const entry = {
