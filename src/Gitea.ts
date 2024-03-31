@@ -44,7 +44,7 @@ try{
      *  <span class="active section" title="lastEl">lastEl</span>
      * </span>
      */
-    const dir = document.querySelectorAll("span.ui.breadcrumb.repo-path")[0].getElementsByClassName("section")
+    const dir = document.querySelectorAll("span.breadcrumb.repo-path")[0].getElementsByClassName("section")
 
     //First element is root
     const rootIconEl = document.createElement('img');
