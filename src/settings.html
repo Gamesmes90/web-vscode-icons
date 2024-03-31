@@ -57,24 +57,27 @@
                 margin: 5px 0;
                 border-radius: 5px;
             }
+
+            h1, h2 {
+                text-align: center;
+            }
         </style>
     </head>
     <body>
-        <h1 style="text-align: center;">Settings</h1>
+        <h1>Settings</h1>
+        <h2>Add a custom entry</h2>
         <form id="custom_entry">
-            <h2>Add a custom entry</h2>
-            
             <label for="url">URL (Without protocol)</label><br>
             <input type="text" id="url" name="url" required><br>
             <label for="type">Type</label><br>
             <select id="type">
-                <option value="gitlab">Gitlab</option>
-                <option value="gitea">Gitea</option>
+                <option value="Gitlab">Gitlab</option>
+                <option value="Gitea">Gitea</option>
             </select>
             <br>
             <button type="submit" id="save">Save</button>
         </form>
-        <h2 style="text-align: center;">Custom entries</h2>
+        <h2>Custom entries</h2>
         <ul id="custom-entries"></ul>
         <script src="settings.js"></script>
     </body>
