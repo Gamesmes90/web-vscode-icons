@@ -15,9 +15,9 @@ const action = {
     }
 }
   
-  const offline_enabled = {
-    "offline_enabled": true
-  }
+const offline_enabled = {
+  "offline_enabled": true
+}
   
 const browserSpecificSettings = {
     browser_specific_settings: {
@@ -26,7 +26,19 @@ const browserSpecificSettings = {
         }
     },
 }
-  
+
+const hostPermissions = {
+  host_permissions: ["http://*/*", "https://*/*"],
+}
+
+const background = {
+    background: {
+      // If browser is Chrome, include service_worker property
+      ...(process.env.BROWSER === 'CHROME'? {service_worker: 'entriesLoader.js'} : {scripts: ['entriesLoader.js']})      
+    }
+}
+
+
 const manifest = {
     manifest_version:3,
     version:'1.1.0',
@@ -72,13 +84,14 @@ const manifest = {
       }
     ],
   
-    // If minimal version, don't include options_ui property
+    // A minimal build doesn't need the following properties
     ...(process.argv.slice(2)[0] === 'minimal'? {} : options_ui),
-  
-    // If minimal version, don't include action property
     ...(process.argv.slice(2)[0] === 'minimal'? {} : action),
-  
-    permissions: process.argv.slice(2)[0] === 'minimal'? [] : ['storage'], // No storage permission for minimal version
+    ...(process.argv.slice(2)[0] === 'minimal'? {} : hostPermissions),
+    ...(process.argv.slice(2)[0] === 'minimal'? {} : background),
+    // No storage permission for minimal version
+    permissions: process.argv.slice(2)[0] === 'minimal'? [] : ['storage', 'scripting'],
+
     web_accessible_resources: [{
         "resources": ["icons/*.svg"],
         "matches": ["<all_urls>"]
