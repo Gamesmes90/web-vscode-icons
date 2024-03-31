@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = {
   entry: {
@@ -32,6 +33,10 @@ let config = {
         patterns: [
             { from: 'utils' }
         ]
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'settings.html',
+      template: './src/settings.html',
     })
   ]
 };
@@ -41,6 +46,7 @@ module.exports = (env, argv) => {
     console.log("Minimal build");
     delete config.entry.main;
     delete config.entry.settings;
+    delete config.plugins.at(1);
   }
   return config;
 };

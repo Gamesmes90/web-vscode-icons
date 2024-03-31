@@ -6,27 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "mkdir dist && npm run manifest:FIREFOX && webpack -w --mode development",
-
     "build:everything": "npm run build:all && npm run build:minimal:all && npm run clean",
-
     "build:all": "npm run build:firefox && npm run build:chrome",
     "build:all:clean": "npm run build:firefox && npm run build:chrome && npm run clean",
     "build:firefox": "npm run compile && npm run manifest:FIREFOX && BROWSER=FIREFOX npm run archive && npm run clean",
     "build:chrome": "npm run compile && npm run manifest:CHROME && BROWSER=CHROME npm run archive && npm run clean",
-
     "build:minimal:all": "npm run build:minimal:firefox && npm run build:minimal:chrome",
     "build:minimal:all:clean": "npm run build:minimal:firefox && npm run build:minimal:chrome && npm run clean",
     "build:minimal:firefox": "npm run compile:minimal && npm run manifest:FIREFOX minimal && BROWSER=FIREFOX npm run archive minimal && npm run clean",
     "build:minimal:chrome": "npm run compile:minimal && npm run manifest:CHROME minimal && BROWSER=CHROME npm run archive minimal && npm run clean",
-
     "manifest:FIREFOX": "BROWSER=FIREFOX ts-node scripts/manifest-gen.ts",
     "manifest:CHROME": "BROWSER=CHROME ts-node scripts/manifest-gen.ts",
-
     "compile": "webpack --mode production",
     "compile:minimal": "webpack --env minimal=true --mode production",
-
     "archive": "ts-node scripts/make-dist-zip.script.ts",
-
     "clean": "rimraf ./dist",
     "clean:all": "rimraf ./build/*.zip && rimraf ./dist"
   },
@@ -51,6 +44,7 @@
     "@types/chrome": "^0.0.181",
     "archiver": "^5.3.0",
     "copy-webpack-plugin": "^10.2.4",
+    "html-webpack-plugin": "^5.6.0",
     "rimraf": "^3.0.2",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.7.0",

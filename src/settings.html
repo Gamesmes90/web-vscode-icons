@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            body {
+                background-color: #333;
+                color: #fff;
+            }
+
+            form {
+                background-color: #444;
+                padding: 20px;
+                border-radius: 5px;
+            }
+
+            label {
+                color: #fff;
+            }
+
+            input[type="text"] {
+                background-color: #555;
+                color: #fff;
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                background-color: #666;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                
+            }
+
+            select {
+                background-color: #555;
+                color: #fff;
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+                margin-bottom: 10px;
+            }
+            
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            li {
+                background-color: #444;
+                padding: 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Settings</h1>
+        <form id="custom_entry">
+            <h2>Add a custom entry</h2>
+            
+            <label for="url">URL (Without protocol)</label><br>
+            <input type="text" id="url" name="url" required><br>
+            <label for="type">Type</label><br>
+            <select id="type">
+                <option value="gitlab">Gitlab</option>
+                <option value="gitea">Gitea</option>
+            </select>
+            <br>
+            <button type="submit" id="save">Save</button>
+        </form>
+        <h2 style="text-align: center;">Custom entries</h2>
+        <ul id="custom-entries"></ul>
+        <script src="settings.js"></script>
+    </body>
+</html>
