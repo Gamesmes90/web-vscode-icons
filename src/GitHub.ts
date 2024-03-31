@@ -6,12 +6,9 @@ export const ROOT_TABLE = ".Box-sc-g0xbh4-0";
 export const ROOT_SIDE_TREE = "ul.TreeView__UlBox-sc-4ex6b6-0";
 export const BACK_FOLDER = 'tr.Box-sc-g0xbh4-0';
 export const TREE_ITEM = 'tr.react-directory-row';
-export const SIDE_TREE_FILE = 'div.PRIVATE_TreeView-item-content';
+export const SIDE_TREE_FILE = 'svg.octicon-file';
 export const SIDE_TREE_OPEN_FOLDER = 'svg.octicon-file-directory-open-fill';
 export const SIDE_TREE_FOLDER = 'svg.octicon-file-directory-fill';
-
-const OPEN_FOLDER_CLASS = SIDE_TREE_OPEN_FOLDER.split('.')[1];
-const SIDE_TREE_FOLDER_CLASS = SIDE_TREE_FOLDER.split('.')[1];
 
 const isHistoryForFile = () => isRepo() && /^\/commits\/[0-9a-f]{5,40}\/.+/.test(utils.getCleanPathname());
 const getIconUrl = (iconFileName: string) => chrome.runtime.getURL('icons/' + iconFileName);
@@ -41,16 +38,11 @@ function showFolderIconTree(svg : SVGElement){
 
 /**
  * Show icon for file tree
- * @param div HTMLDivElement
+ * @param svg SVGElement
  * @returns 
  */
-function showIconForFileTree(div : HTMLDivElement){
-  const svg = div.querySelector('div > svg');
-  if (!svg) return;
-  // Skip if it's a folder
-  if (svg.classList.contains(OPEN_FOLDER_CLASS) || svg.classList.contains(SIDE_TREE_FOLDER_CLASS)) return;
-
-  const name = div.querySelector('span > span')?.textContent?.toLowerCase();
+function showIconForFileTree(svg : SVGElement){
+  const name = svg.parentNode.parentNode.querySelector('span > span')?.textContent?.toLowerCase();
   if (!name) return;
 
   const newIconEl = document.createElement('img');
@@ -61,8 +53,10 @@ function showIconForFileTree(div : HTMLDivElement){
 
   svg.parentNode.replaceChild(newIconEl, svg);
 }
+
 /**
  * Show icon for side tree
+ * @param tree HTMLUListElement
  */
 function showIconsForSideTree (tree : HTMLUListElement) {
   if(isRepoRoot()) return;
@@ -105,8 +99,8 @@ function showIconsForSideTree (tree : HTMLUListElement) {
   */
 
   observe(SIDE_TREE_FILE, {
-    add(div) {
-      showIconForFileTree(div as HTMLDivElement);
+    add(svg) {
+      showIconForFileTree(svg as SVGElement);
     }
   });
 
@@ -125,6 +119,7 @@ function showIconsForSideTree (tree : HTMLUListElement) {
   
 /**
  * Shows icon for single element
+ * @param tr table row element
  */
 function showIconForSingleElement(tr : HTMLTableRowElement) {
   const svg = tr.querySelector('td > div > svg');
@@ -167,6 +162,7 @@ function showIconForBackButton(tr : HTMLTableRowElement) {
 
 /**
  * Show icons for repository files
+ * @param table table element
  */
 function showRepoTreeIcons(table: HTMLTableElement) {
   /* Each row in the table has the following structure:
