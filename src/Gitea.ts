@@ -69,8 +69,9 @@ try{
     
     //Last element
     const lastIconEl = document.createElement('img');
-    //If this node exists and it has only one child there's a file (if it has more than one child it's a folder with a readme)
-    if (document.contains(document.querySelectorAll("div.file-header-left.df.ac")[0]) && document.querySelectorAll("div.file-header-left.df.ac")[0].children.length == 1 )
+    
+    //If the div for the file content exists, this is a file page
+    if (document.querySelector("div.non-diff-file-content"))
         lastIconEl.setAttribute('src', chrome.runtime.getURL('./icons/'+ getIconForFile(dir[dir.length - 1].innerHTML.toLowerCase()))); //file
     else
         lastIconEl.setAttribute('src', chrome.runtime.getURL('./icons/'+ getIconForOpenFolder(dir[dir.length - 1].innerHTML.toLowerCase()))); //folder
