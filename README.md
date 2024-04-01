@@ -13,6 +13,8 @@ Shows icons on repositories and files on the following websites:
 
 You can also add custom entries to show icons on other websites.
 
+The minimal version of this extension does not have the custom entries and settings.
+
 ## Usage
 Just install the extension and it will work out of the box.
 You can add custom entries by clicking on the extension icon or going to the extension settings.
