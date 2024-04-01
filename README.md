@@ -5,15 +5,23 @@ Inspired by [github-vscode-icons](github-vscode-icons), this extensions adds som
 
 ## Features
 
-- [x] GitHub
-- [x] GitHub Directory
-- [x] GitLab
-- [x] GitLab Directory
-- [x] SourceForge
-- [x] Gitea
-- [x] Gitea Directory
-- [ ] Options menu
-- [ ] Custom entries
+Shows icons on repositories and files on the following websites:
+- Github
+- Gitlab
+- Sourceforge
+- Gitea
+
+You can also add custom entries to show icons on other websites.
+
+## Usage
+Just install the extension and it will work out of the box.
+You can add custom entries by clicking on the extension icon or going to the extension settings.
+
+## Troubleshooting
+If icons are not showing up
+- Try to reload the page
+- Check if the extension has permissions to access the page
+
 
 ## Bug fixes
 - Fixed Gitlab [thanks to this fork](https://github.com/jefersonla/github-vscode-icons)
